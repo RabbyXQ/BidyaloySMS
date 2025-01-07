@@ -1,0 +1,27 @@
+{
+  "dependencies": {
+    "@chakra-ui/react": "^3.2.5",
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.0",
+    "framer-motion": "^11.15.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@babel/preset-react": "^7.26.3",
+    "css-loader": "^7.1.2",
+    "laravel-mix": "^6.0.0",
+    "resolve-url-loader": "^5.0.0",
+    "sass": "^1.83.1",
+    "sass-loader": "^12.6.0",
+    "style-loader": "^4.0.0",
+    "webpack": "^5.97.1"
+  },
+  "scripts": {
+    "dev": "npm run development",
+    "development": "mix",
+    "watch": "mix watch",
+    "prod": "npm run production",
+    "production": "mix --production"
+  }
+}
