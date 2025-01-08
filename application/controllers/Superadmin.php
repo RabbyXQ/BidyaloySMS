@@ -353,6 +353,65 @@ class Superadmin extends CI_Controller {
   //END PARENT section
 
 
+
+  //{Pages}
+// Page section methods
+public function page($param1 = '', $param2 = '', $param3 = '') {
+  // Create a new page
+  if ($param1 == 'create') {
+      $response = $this->crud_model->page_create();
+      echo $response;
+      return; // Stop further execution after response
+  }
+
+  // Update an existing page
+  if ($param1 == 'update') {
+      if (empty($param2)) {
+          echo json_encode(['status' => false, 'notification' => 'Page ID is required for update.']);
+          return; // Stop further execution
+      }
+      $response = $this->crud_model->page_update($param2);
+      echo $response;
+      return; // Stop further execution after response
+  }
+
+  // Delete a page
+  if ($param1 == 'delete') {
+      if (empty($param2)) {
+          echo json_encode(['status' => false, 'notification' => 'Page ID is required for deletion.']);
+          return; // Stop further execution
+      }
+      $response = $this->crud_model->page_delete($param2);
+      echo $response;
+      return; // Stop further execution after response
+  }
+
+  // Filter and show pages based on class or section (if needed)
+  if ($param1 == 'filter') {
+      if (empty($param2)) {
+          echo json_encode(['status' => false, 'notification' => 'Class ID is required for filter.']);
+          return; // Stop further execution
+      }
+      $page_data['class_id'] = $param2;
+      $page_data['section_id'] = $param3;
+      $this->load->view('backend/superadmin/page', $page_data); // Show filtered pages
+      return; // Stop further execution
+  }
+
+  // If no action is provided, display the default page list
+  if (empty($param1)) {
+      $page_data['folder_name'] = 'page';
+      $page_data['page_title'] = 'Pages';
+      $this->load->view('backend/index', $page_data); // Main page view
+      return; // Stop further execution
+  }
+}
+
+
+
+
+
+
   //START ACCOUNTANT section
   public function accountant($param1 = '', $param2 = ''){
 
@@ -415,6 +474,11 @@ class Superadmin extends CI_Controller {
     }
   }
   //END LIBRARIAN section
+
+
+
+
+
 
   //START CLASS ROUTINE section
   public function routine($param1 = '', $param2 = '', $param3 = '', $param4 = ''){

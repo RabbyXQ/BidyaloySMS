@@ -63,13 +63,13 @@ $(document).ready(function () {
         },
         submitHandler: function(form) {
             var $form = $(form);
-            ajaxSubmit(form, $form, getFilteredPageData);
+            ajaxSubmit(form, $form);
         }
     });
 });
 
 // AJAX submission
-function ajaxSubmit(e, form, callback) {
+function ajaxSubmit(e, form) {
     e.preventDefault();
     $.ajax({
         url: form.attr('action'),
@@ -79,11 +79,8 @@ function ajaxSubmit(e, form, callback) {
             var res = JSON.parse(response);
             if (res.status) {
                 alert(res.notification); // Show success message
-                if (callback) {
-                    callback(); // Call the callback function if provided
-                }
-                // Redirect to the page list after successful submission
-                window.location.href = '/page';
+                // Redirect to the parent page after successful creation
+                window.location.href = "<?php echo site_url('superadmin/page'); ?>"; // Replace with your parent page URL
             } else {
                 alert(res.notification); // Show error message
             }
@@ -92,11 +89,5 @@ function ajaxSubmit(e, form, callback) {
             alert("<?php echo get_phrase('ajax_error'); ?>"); // Show AJAX error message
         }
     });
-}
-
-// Function to reload or refresh page data (if needed)
-function getFilteredPageData() {
-    // You can customize this function if you need to update or refresh data
-    location.reload(); // For example, reload the page
 }
 </script>

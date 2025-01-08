@@ -67,6 +67,90 @@ class Crud_model extends CI_Model {
 		return json_encode($response);
 	}
 
+
+
+
+	// Fetch Pages
+// Fetch Pages
+	public function get_pages($id = "") {
+		if (!empty($id)) {
+			$this->db->where('id', $id);
+		}
+		return $this->db->get('pages')->result_array();
+	}
+
+
+	// Create Page
+// Create Page
+public function page_create() {
+    // Validate inputs before proceeding
+    $title = $this->input->post('title');
+    $slug = $this->input->post('slug');
+    $content = $this->input->post('content');
+
+    if (empty($title) || empty($slug) || empty($content)) {
+        return json_encode(array('status' => false, 'notification' => 'All fields are required.'));
+    }
+
+    $data = [
+        'title' => html_escape($title),
+        'slug' => html_escape($slug),
+        'content' => $content,
+    ];
+
+    $this->db->insert('pages', $data);
+
+    $response = array(
+        'status' => true,
+        'notification' => 'Page added successfully.'
+    );
+    return json_encode($response);
+}
+
+
+	// Update Page
+	// Update Page
+public function page_update($id) {
+    $title = $this->input->post('title');
+    $slug = $this->input->post('slug');
+    $content = $this->input->post('content');
+
+    if (empty($title) || empty($slug) || empty($content)) {
+        return json_encode(array('status' => false, 'notification' => 'All fields are required.'));
+    }
+
+    $data = [
+        'title' => html_escape($title),
+        'slug' => html_escape($slug),
+        'content' => $content,
+    ];
+
+    $this->db->where('id', $id);
+    $this->db->update('pages', $data);
+
+    $response = array(
+        'status' => true,
+        'notification' => 'Page updated successfully.'
+    );
+    return json_encode($response);
+}
+
+
+// Delete Page
+public function page_delete($id) {
+    $this->db->where('id', $id);
+    $this->db->delete('pages');
+
+    $response = array(
+        'status' => true,
+        'notification' => 'Page deleted successfully.'
+    );
+    return json_encode($response);
+}
+
+	
+
+
 	public function section_update($param1 = '')
 	{
 		$section_id = html_escape($this->input->post('section_id'));
