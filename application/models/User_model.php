@@ -28,12 +28,20 @@ class User_model extends CI_Model {
 	}
 	// GET USER DETAILS
 	public function get_user_details($user_id = '', $column_name = '') {
-		if($column_name != ''){
-			return $this->db->get_where('users', array('id' => $user_id))->row($column_name);
-		}else{
-			return $this->db->get_where('users', array('id' => $user_id))->row_array();
+		$this->db->select('*'); // Select necessary columns
+		$this->db->from('users');
+		$this->db->join('students', 'students.user_id = users.id', 'left'); // Join students table with users
+		$this->db->where('users.id', $user_id);
+	
+		$query = $this->db->get();
+	
+		if ($column_name != '') {
+			return $query->row($column_name); // Return specific column value
+		} else {
+			return $query->row_array(); // Return all data as an array
 		}
 	}
+	
 
 	// ADMIN CRUD SECTION STARTS
 	public function create_admin() {
@@ -585,39 +593,24 @@ class User_model extends CI_Model {
 
 			$student_data['code'] = student_code();
 			$student_data['user_id'] = $user_id;
-			$student_data['father_name'] = html_escape($this->input->post('father_name'));
-			$student_data['mother_name'] = html_escape($this->input->post('mother_name'));
-
-			$student_data['father_nid'] = html_escape($this->input->post('father_nid'));
-        	$student_data['mother_nid'] = html_escape($this->input->post('mother_nid'));
-
-			$student_data['father_mobile'] = html_escape($this->input->post('father_mobile'));
-        	$student_data['mother_mobile'] = html_escape($this->input->post('mother_mobile'));
-        	$student_data['student_birth_certificate_number'] = html_escape($this->input->post('student_birth_certificate_number'));
-
+			$student_data['parent_id'] = html_escape($this->input->post('parent_id'));
 			$student_data['session'] = $this->active_session;
 			$student_data['school_id'] = $this->school_id;
-			
-			
+			$student_data['parent_id'] = html_escape($this->input->post('parent_id'));
+			$student_data['father_name'] = html_escape($this->input->post('father_name'));
+			$student_data['mother_name'] = html_escape($this->input->post('mother_name'));
+			$student_data['father_mobile'] = html_escape($this->input->post('father_mobile'));
+			$student_data['mother_mobile'] = html_escape($this->input->post('mother_mobile'));
+			$student_data['student_birth_certificate_number'] = html_escape($this->input->post('student_birth_certificate_number'));
+			$student_data['father_nid'] = html_escape($this->input->post('father_nid'));
+			$student_data['mother_nid'] = html_escape($this->input->post('mother_nid'));
+
+
+			// student_birth_certificate_number 
+
 
 			$this->db->insert('students', $student_data);
 			$student_id = $this->db->insert_id();
-
-
-
-			if (!empty($_FILES['father_nid_pdf']['tmp_name'])) {
-				move_uploaded_file($_FILES['father_nid']['tmp_name'], 'uploads/father_nid/' . $student_id . '_father_nid.jpg');
-			}
-		
-			if (!empty($_FILES['mother_nid_pdf']['tmp_name'])) {
-				move_uploaded_file($_FILES['mother_nid']['tmp_name'], 'uploads/mother_nid/' . $student_id . '_mother_nid.jpg');
-			}
-		
-			if (!empty($_FILES['student_birth_certificate_pdf']['tmp_name'])) {
-				move_uploaded_file($_FILES['student_birth_certificate']['tmp_name'], 'uploads/birth_certificates/' . $student_id . '_birth_certificate.jpg');
-			}
-
-
 
 			$enroll_data['student_id'] = $student_id;
 			$enroll_data['class_id'] = html_escape($this->input->post('class_id'));
@@ -671,6 +664,15 @@ class User_model extends CI_Model {
 				$student_data['code'] = student_code();
 				$student_data['user_id'] = $user_id;
 				$student_data['parent_id'] = $students_parent[$key];
+				$student_data['father_name'] = html_escape($this->input->post('father_name'));
+				$student_data['mother_name'] = html_escape($this->input->post('mother_name'));
+				$student_data['father_mobile'] = html_escape($this->input->post('father_mobile'));
+				$student_data['mother_mobile'] = html_escape($this->input->post('mother_mobile'));
+				$student_data['student_birth_certificate_number'] = html_escape($this->input->post('student_birth_certificate_number'));
+				$student_data['father_nid'] = html_escape($this->input->post('father_nid'));
+				$student_data['mother_nid'] = html_escape($this->input->post('mother_nid'));
+
+
 				$student_data['session'] = $this->active_session;
 				$student_data['school_id'] = $this->school_id;
 				$this->db->insert('students', $student_data);
@@ -736,6 +738,15 @@ class User_model extends CI_Model {
 						$student_data['code'] = student_code();
 						$student_data['user_id'] = $user_id;
 						$student_data['parent_id'] = html_escape($all_data[4]);
+						$student_data['father_name'] = html_escape($this->input->post('father_name'));
+						$student_data['mother_name'] = html_escape($this->input->post('mother_name'));
+						$student_data['father_mobile'] = html_escape($this->input->post('father_mobile'));
+						$student_data['mother_mobile'] = html_escape($this->input->post('mother_mobile'));
+						$student_data['student_birth_certificate_number'] = html_escape($this->input->post('student_birth_certificate_number'));
+						$student_data['father_nid'] = html_escape($this->input->post('father_nid'));
+						$student_data['mother_nid'] = html_escape($this->input->post('mother_nid'));
+
+
 						$student_data['session'] = $session_id;
 						$student_data['school_id'] = $school_id;
 						$this->db->insert('students', $student_data);
@@ -772,6 +783,8 @@ class User_model extends CI_Model {
 	}
 
 	public function student_update($student_id = '', $user_id = ''){
+
+
 		$student_data['parent_id'] = html_escape($this->input->post('parent_id'));
 
 		$enroll_data['class_id'] = html_escape($this->input->post('class_id'));
@@ -797,6 +810,8 @@ class User_model extends CI_Model {
 			$this->db->update('users', $user_data);
 
 			move_uploaded_file($_FILES['student_image']['tmp_name'], 'uploads/users/'.$user_id.'.jpg');
+
+
 
 			$response = array(
 				'status' => true,
@@ -857,6 +872,10 @@ class User_model extends CI_Model {
 				$enrol_data[$key]['user_id'] = $student_details['user_id'];
 				$enrol_data[$key]['parent_id'] = $student_details['parent_id'];
 				$user_details = $this->db->get_where('users', array('id' => $student_details['user_id']))->row_array();
+				
+
+
+
 				$enrol_data[$key]['name'] = $user_details['name'];
 				$enrol_data[$key]['email'] = $user_details['email'];
 				$enrol_data[$key]['role'] = $user_details['role'];
@@ -865,6 +884,15 @@ class User_model extends CI_Model {
 				$enrol_data[$key]['birthday'] = $user_details['birthday'];
 				$enrol_data[$key]['gender'] = $user_details['gender'];
 				$enrol_data[$key]['blood_group'] = $user_details['blood_group'];
+				$enrol_data[$key]['father_name'] = $user_details['father_name'];
+				$enrol_data[$key]['mother_name'] = $user_details['mother_name'];
+				$enrol_data[$key]['father_mobile'] = $user_details['father_mobile'];
+				$enrol_data[$key]['mother_mobile'] = $user_details['mother_mobile'];
+				$enrol_data[$key]['father_nid'] = $user_details['father_nid'];
+				$enrol_data[$key]['mother_nid'] = $user_details['mother_nid'];
+				$enrol_data[$key]['student_birth_certificate_number'] = $user_details['student_birth_certificate_number'];
+
+
 
 				$class_details = $this->crud_model->get_class_details_by_id($enrol['class_id'])->row_array();
 				$section_details = $this->crud_model->get_section_details_by_id('section', $enrol['section_id'])->row_array();
@@ -885,6 +913,7 @@ class User_model extends CI_Model {
 				$enrol_data[$key]['code'] = $student_details['code'];
 				$enrol_data[$key]['user_id'] = $student_details['user_id'];
 				$enrol_data[$key]['parent_id'] = $student_details['parent_id'];
+				
 				$user_details = $this->db->get_where('users', array('id' => $student_details['user_id']))->row_array();
 				$enrol_data[$key]['name'] = $user_details['name'];
 				$enrol_data[$key]['email'] = $user_details['email'];
@@ -894,6 +923,14 @@ class User_model extends CI_Model {
 				$enrol_data[$key]['birthday'] = $user_details['birthday'];
 				$enrol_data[$key]['gender'] = $user_details['gender'];
 				$enrol_data[$key]['blood_group'] = $user_details['blood_group'];
+				$enrol_data[$key]['father_name'] = $user_details['father_name'];
+				$enrol_data[$key]['mother_name'] = $user_details['mother_name'];
+				$enrol_data[$key]['father_mobile'] = $user_details['father_mobile'];
+				$enrol_data[$key]['mother_mobile'] = $user_details['mother_mobile'];
+				$enrol_data[$key]['father_nid'] = $user_details['father_nid'];
+				$enrol_data[$key]['mother_nid'] = $user_details['mother_nid'];
+				$enrol_data[$key]['student_birth_certificate_number'] = $user_details['student_birth_certificate_number'];
+
 
 				$class_details = $this->crud_model->get_class_details_by_id($enrol['class_id'])->row_array();
 				$section_details = $this->crud_model->get_section_details_by_id('section', $enrol['section_id'])->row_array();
@@ -913,9 +950,20 @@ class User_model extends CI_Model {
 			$enrol_data['code'] = $student_details['code'];
 			$enrol_data['user_id'] = $student_details['user_id'];
 			$enrol_data['parent_id'] = $student_details['parent_id'];
+
 			$user_details = $this->db->get_where('users', array('id' => $student_details['user_id']))->row_array();
 			$enrol_data['name'] = $user_details['name'];
 			$enrol_data['email'] = $user_details['email'];
+
+			$enrol_data['father_name'] = $user_details['father_name'];
+			$enrol_data['mother_name'] = $user_details['mother_name'];
+			$enrol_data['father_mobile'] = $user_details['father_mobile'];
+			$enrol_data['mother_mobile'] = $user_details['mother_mobile'];
+			$enrol_data['father_nid'] = $user_details['father_nid'];
+			$enrol_data['mother_nid'] = $user_details['mother_nid'];
+			$enrol_data['student_birth_certificate_number'] = $user_details['student_birth_certificate_number'];
+
+
 			$enrol_data['role'] = $user_details['role'];
 			$enrol_data['address'] = $user_details['address'];
 			$enrol_data['phone'] = $user_details['phone'];
@@ -977,8 +1025,15 @@ class User_model extends CI_Model {
 
 	//GET LOGGED IN USER DATA
 	public function get_profile_data() {
-		return $this->db->get_where('users', array('id' => $this->session->userdata('user_id')))->row_array();
+		$this->db->select('*');
+		$this->db->from('users');
+		$this->db->join('students', 'students.user_id = users.id', 'left'); // Join with the students table
+		$this->db->where('users.id', $this->session->userdata('user_id')); // Filter by the logged-in user's ID
+	
+		$query = $this->db->get();
+		return $query->row_array(); // Return the result as an associative array
 	}
+	
 
 	public function update_profile() {
 		$response = array();
@@ -1073,6 +1128,18 @@ class User_model extends CI_Model {
 			$students[$key]['email'] = $user_details['email'];
 			$students[$key]['role'] = $user_details['role'];
 			$students[$key]['address'] = $user_details['address'];
+			$students[$key]['father_name'] = $user_details['father_name'];
+			$students[$key]['mother_name'] = $user_details['mother_name'];
+			$students[$key]['father_nid'] = $user_details['father_nid'];
+			$students[$key]['mother_nid'] = $user_details['mother_nid'];
+			$students[$key]['father_mobile'] = $user_details['father_mobile'];
+			//student_birth_certificate_number
+			$students[$key]['student_birth_certificate_number'] = $user_details['student_birth_certificate_number'];
+
+
+
+
+
 			$students[$key]['phone'] = $user_details['phone'];
 			$students[$key]['birthday'] = $user_details['birthday'];
 			$students[$key]['gender'] = $user_details['gender'];

@@ -62,23 +62,46 @@
                     <table class="table table-centered mb-0">
                         <tbody>
                             <tr>
-                                <td style="font-weight: bold;"><?php echo get_phrase('parent_name'); ?>:</td>
+                                <td style="font-weight: bold;">Father's Name</td>
                                 <td>
-                                    <?php echo $this->user_model->get_user_details($parent['user_id'], 'name'); ?>
+                                <?php echo $this->user_model->get_user_details($student['user_id'], 'father_name'); ?>
                                 </td>
                             </tr>
                             <tr>
-                                <td style="font-weight: bold;"><?php echo get_phrase('parent_email'); ?>:</td>
+                                <td style="font-weight: bold;">Mother's Name</td>
                                 <td>
-                                    <?php echo $this->user_model->get_user_details($parent['user_id'], 'email'); ?>
+                                <?php echo $this->user_model->get_user_details($student['user_id'], 'mother_name'); ?>
                                 </td>
                             </tr>
+
                             <tr>
-                                <td style="font-weight: bold;"><?php echo get_phrase('parent_phone_number'); ?>:</td>
+                                <td style="font-weight: bold;">Father's Mobile</td>
                                 <td>
-                                    <?php echo $this->user_model->get_user_details($parent['user_id'], 'phone'); ?>
+                                <?php echo $this->user_model->get_user_details($student['user_id'], 'father_mobile'); ?>
                                 </td>
                             </tr>
+
+                            <tr>
+                                <td style="font-weight: bold;">Mother's Mobile</td>
+                                <td>
+                                <?php echo $this->user_model->get_user_details($student['user_id'], 'mother_mobile'); ?>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td style="font-weight: bold;">Father's NID</td>
+                                <td>
+                                <?php echo $this->user_model->get_user_details($student['user_id'], 'father_nid'); ?>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td style="font-weight: bold;">Mother's NID</td>
+                                <td>
+                                <?php echo $this->user_model->get_user_details($student['user_id'], 'mother_nid'); ?>
+                                </td>
+                            </tr>
+                           
                         </tbody>
                     </table>
                 </div>

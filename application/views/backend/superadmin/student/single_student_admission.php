@@ -64,26 +64,6 @@
         </div>
 
       
-        <div class="form-group row mb-3">
-            <label class="col-md-3 col-form-label" for="father_nid_pdf"><?php echo get_phrase('father_nid_pdf'); ?></label>
-            <div class="col-md-9">
-                <input type="file" id="father_nid_pdf" name="father_nid_pdf" class="form-control" accept="application/pdf">
-            </div>
-        </div>
-
-        <div class="form-group row mb-3">
-            <label class="col-md-3 col-form-label" for="mother_nid_pdf"><?php echo get_phrase('mother_nid_pdf'); ?></label>
-            <div class="col-md-9">
-                <input type="file" id="mother_nid_pdf" name="mother_nid_pdf" class="form-control" accept="application/pdf">
-            </div>
-        </div>
-
-        <div class="form-group row mb-3">
-            <label class="col-md-3 col-form-label" for="student_birth_certificate_pdf"><?php echo get_phrase('student_birth_certificate_pdf'); ?></label>
-            <div class="col-md-9">
-                <input type="file" id="student_birth_certificate_pdf" name="student_birth_certificate_pdf" class="form-control" accept="application/pdf">
-            </div>
-        </div>
 
 
         <div class="form-group row mb-3">

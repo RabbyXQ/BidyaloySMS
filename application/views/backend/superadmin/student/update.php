@@ -24,26 +24,71 @@
                                 <input type="text" id="name" name="name" class="form-control"  value="<?php echo $this->user_model->get_user_details($student['user_id'], 'name'); ?>" placeholder="name" required>
                             </div>
                         </div>
+<!-- Email -->
+<div class="form-group row mb-3">
+    <label class="col-md-3 col-form-label" for="email"><?php echo get_phrase('email'); ?></label>
+    <div class="col-md-9">
+        <input type="email" class="form-control" id="email" name="email" 
+               value="<?php echo $this->user_model->get_user_details($student['user_id'], 'email'); ?>" 
+               placeholder="email" required>
+    </div>
+</div>
 
-                        <div class="form-group row mb-3">
-                            <label class="col-md-3 col-form-label" for="email"><?php echo get_phrase('email'); ?></label>
-                            <div class="col-md-9">
-                                <input type="email" class="form-control" id="email" name="email" value="<?php echo $this->user_model->get_user_details($student['user_id'], 'email'); ?>" placeholder="email" required>
-                            </div>
-                        </div>
+    <!-- Father Name -->
+    <div class="form-group row mb-3">
+        <label class="col-md-3 col-form-label" for="father_name"><?php echo get_phrase('father_name'); ?></label>
+        <div class="col-md-9">
+            <input type="text" id="father_name" name="father_name" class="form-control" 
+                value="<?php echo $this->user_model->get_user_details($student['user_id'], 'father_name'); ?>" 
+                placeholder="Father's Name">
+        </div>
+    </div>
 
-                        <div class="form-group row mb-3">
-                            <label class="col-md-3 col-form-label" for="parent_id"><?php echo get_phrase('parent'); ?></label>
-                            <div class="col-md-9">
-                                <select id="parent_id" name="parent_id" class="form-control select2"  data-bs-toggle="select2" required >
-                                    <option value="">Select A Parent</option>
-                                    <?php $parents = $this->db->get_where('parents', array('school_id' => $school_id))->result_array(); ?>
-                                    <?php foreach($parents as $parent): ?>
-                                        <option value="<?php echo $parent['id']; ?>" <?php if($student['parent_id'] == $parent['id']) echo 'selected'; ?>><?php echo $this->user_model->get_user_details($parent['user_id'], 'name'); ?></option>
-                                    <?php endforeach; ?>
-                                </select>
-                            </div>
+        <!-- Mother Name -->
+        <div class="form-group row mb-3">
+            <label class="col-md-3 col-form-label" for="mother_name"><?php echo get_phrase('mother_name'); ?></label>
+            <div class="col-md-9">
+                <input type="text" id="mother_name" name="mother_name" class="form-control" placeholder="Mother's Name" value="<?php echo $this->user_model->get_user_details($student['user_id'], 'mother_name'); ?>">
+            </div>
+        </div>
+
+
+        <div class="form-group row mb-3">
+            <label class="col-md-3 col-form-label" for="father_mobile"><?php echo get_phrase('father_mobile'); ?></label>
+            <div class="col-md-9">
+                <input type="text" id="father_mobile" name="father_mobile" class="form-control" value="<?php echo $this->user_model->get_user_details($student['user_id'], 'father_mobile'); ?>" placeholder="Father Mobile" required>
+            </div>
+        </div>
+
+        <div class="form-group row mb-3">
+            <label class="col-md-3 col-form-label" for="mother_mobile"><?php echo get_phrase('mother_mobile'); ?></label>
+            <div class="col-md-9">
+                <input type="text" id="mother_mobile" name="mother_mobile" value="<?php echo $this->user_model->get_user_details($student['user_id'], 'mother_mobile'); ?>" class="form-control" placeholder="Mother Mobile" required>
+            </div>
+        </div>
+
+        <!-- Document Uploads -->
+                    <div class="form-group row mb-3">
+                        <label class="col-md-3 col-form-label" for="student_birth_certificate_number"><?php echo get_phrase('birth_registration_number'); ?></label>
+                        <div class="col-md-9">
+                            <input type="text" id="student_birth_certificate_number" value="<?php echo $this->user_model->get_user_details($student['user_id'], 'student_birth_certificate_number'); ?>" name="student_birth_certificate_number" class="form-control" placeholder="BRC Number" required>
                         </div>
+                    </div>
+
+                    <div class="form-group row mb-3">
+                        <label class="col-md-3 col-form-label" for="father_nid"><?php echo get_phrase('father_nid'); ?></label>
+                        <div class="col-md-9">
+                            <input type="text" id="father_nid" name="father_nid" value="<?php echo $this->user_model->get_user_details($student['user_id'], 'father_nid'); ?>"  class="form-control" placeholder="Father NID Number" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group row mb-3">
+                        <label class="col-md-3 col-form-label" for="mother_nid" ><?php echo get_phrase('mother_nid'); ?></label>
+                        <div class="col-md-9">
+                            <input type="text" id="mother_nid" name="mother_nid" value="<?php echo $this->user_model->get_user_details($student['user_id'], 'mother_nid'); ?>"  class="form-control" placeholder="Mother NID Number" required>
+                        </div>
+                    </div>
+
 
                         <div class="form-group row mb-3">
                             <label class="col-md-3 col-form-label" for="class_id"><?php echo get_phrase('class'); ?></label>
