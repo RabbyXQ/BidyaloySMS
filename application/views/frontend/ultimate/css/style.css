@@ -477,3 +477,112 @@ h4 {
     background-color: #007bff; /* Your hover background color */
     color: #fff; /* Hover text color */
 }
+
+
+
+/* Section Styling */
+.update-section {
+    background: #f6f6f6;
+    padding: 10px 0;
+}
+
+/* Breaking News Ticker */
+.breaking-news-ticker {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: rgb(249, 168, 40);
+    background: #ffffff;
+    border: 1px solid rgb(249, 168, 40);
+    border-radius: 2px;
+    height: 40px;
+    line-height: 38px;
+    overflow: hidden;
+    position: relative;
+    padding: 0 15px;
+}
+
+.bn-label {
+    background: rgb(249, 168, 40);
+    color: #fff;
+    font-weight: bold;
+    padding: 0 10px;
+    border-radius: 2px;
+}
+
+.bn-news {
+    flex-grow: 1;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    padding-left: 10px;
+}
+
+.bn-news ul {
+    display: flex;
+    animation: slide-left 10s linear infinite;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.bn-news ul li {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.bn-news ul li a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.bn-news ul li a:hover {
+    color: #0056b3;
+}
+
+/* Controls Styling */
+.bn-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.bn-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+.bn-arrow {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border: solid rgb(249, 168, 40);
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+    transition: border-color 0.3s ease;
+}
+
+.bn-prev {
+    transform: rotate(135deg);
+}
+
+.bn-next {
+    transform: rotate(-45deg);
+}
+
+.bn-btn:hover .bn-arrow {
+    border-color: #0056b3;
+}
+
+/* Animation for Ticker */
+@keyframes slide-left {
+    from {
+        transform: translateX(100%);
+    }
+    to {
+        transform: translateX(-100%);
+    }
+}
