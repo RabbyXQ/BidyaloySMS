@@ -1,6 +1,6 @@
+<br/>
+<br/>
 <div class="container"> 
-		
-	
 		    <div class="content">
 		        <h1 class="uni-name">Brief of History</h1>
 		        <p class="description">

@@ -416,3 +416,64 @@ h4 {
 #news-events-holder ul.news>li>div>.desc>a:hover {
     color: #000;
 }
+
+/* Change the dropdown icon color */
+.nav-link .fa-chevron-down {
+    color: #333; /* Default icon color */
+    transition: color 0.3s ease;
+}
+
+/* Hover effect for the icon */
+.nav-link:hover .fa-chevron-down {
+    color: #007bff; /* Change to your primary color */
+}
+
+/* Customize dropdown menu background and item hover */
+.dropdown-menu {
+    background-color: #f8f9fa; /* Light background */
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+/* Style dropdown items */
+.dropdown-item {
+    color: #333; /* Default text color */
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Hover effect for dropdown items */
+.dropdown-item:hover {
+    background-color: #007bff; /* Your hover background color */
+    color: #fff; /* Hover text color */
+}
+
+
+/* Change the dropdown icon color */
+.nav-link .fa-chevron-down {
+    color: #333; /* Default icon color */
+    transition: color 0.3s ease;
+}
+
+/* Hover effect for the icon */
+.nav-link:hover .fa-chevron-down {
+    color: #007bff; /* Change to your primary color */
+}
+
+/* Customize dropdown menu background and item hover */
+.dropdown-menu {
+    background-color: #f8f9fa; /* Light background */
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+/* Style dropdown items */
+.dropdown-item {
+    color: #333; /* Default text color */
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Hover effect for dropdown items */
+.dropdown-item:hover {
+    background-color: #007bff; /* Your hover background color */
+    color: #fff; /* Hover text color */
+}

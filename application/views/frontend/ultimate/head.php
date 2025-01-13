@@ -1,11 +1,10 @@
 
 <div class="top-nav" style="background: #2E3094;">
 			<div class="container">
+				
 				<div class="row">
 					<div class="col-md-5 col-sm-5">
-					<!-------------
 						<div class="top-nav-left"> <i style="color:#00bcd4;" class="fa fa-envelope" aria-hidden="true"></i> ngc_principal@yahoo.com <i style="color:#00bcd4;" class="fa fa-phone-square" aria-hidden="true"></i> 02334433585 </div>
-					--------------->	
 					</div>
 					<div class="col-md-6 col-sm-6 top-navigation">
 						<ul style="float: right;" class="nav">
@@ -58,8 +57,15 @@
 			</div>
 			
 		</div>
+
+
+
 		
 	</div>
+
+
+
+
 	<div class="sec-nav">
 			<div class="container">
 			<div class="col-md-12 col-sm-12 nav-itm">
@@ -76,6 +82,7 @@
 								<a class="nav-link bt-nav dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 									About
 								</a>
+</a>
 								<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 
 

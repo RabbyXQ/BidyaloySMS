@@ -120,3 +120,8 @@
 <script src="<?php echo base_url();?>assets/rabbyx/js/owl.js"></script>
 <script src="<?php echo base_url();?>assets/rabbyx/js/breaking-news-ticker.min.js"></script>
 <link rel="stylesheet" href="https://use.fontawesome.com/826a7e3dce.css" media="all">
+<!-- Bootstrap CSS -->
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Font Awesome -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
