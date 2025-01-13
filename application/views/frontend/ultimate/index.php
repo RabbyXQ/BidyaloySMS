@@ -10,8 +10,7 @@
     <?php include 'stylesheets.php';?>
   </head>
   <body>
-
-    <?php include 'navigation.php';?>
+    <?php include 'head.php';?>
 
     <?php include $page_name . '.php';?>
 

@@ -354,6 +354,221 @@ class Superadmin extends CI_Controller {
 
 
 
+    // TopMenu1 section methods
+  public function topmenu1($param1 = '', $param2 = '', $param3 = '') {
+    // Create a new TopMenu1 item
+    if ($param1 == 'create') {
+        $response = $this->crud_model->topmenu1_create();
+        echo $response;
+        return; // Stop further execution after response
+    }
+
+    // Update an existing TopMenu1 item
+    if ($param1 == 'update') {
+        if (empty($param2)) {
+            echo json_encode(['status' => false, 'notification' => 'TopMenu1 ID is required for update.']);
+            return; // Stop further execution
+        }
+        $response = $this->crud_model->topmenu1_update($param2);
+        echo $response;
+        return; // Stop further execution after response
+    }
+
+    // Delete a TopMenu1 item
+    if ($param1 == 'delete') {
+        if (empty($param2)) {
+            echo json_encode(['status' => false, 'notification' => 'TopMenu1 ID is required for deletion.']);
+            return; // Stop further execution
+        }
+        $response = $this->crud_model->topmenu1_delete($param2);
+        echo $response;
+        return; // Stop further execution after response
+    }
+
+    // Display the default TopMenu1 list
+    if (empty($param1)) {
+        $page_data['folder_name'] = 'topmenu1';
+        $page_data['page_title'] = 'TopMenu1';
+        $this->load->view('backend/index', $page_data); // Main page view
+        return; // Stop further execution
+    }
+  }
+
+
+
+
+
+    // TopMenu2 section methods
+  public function topmenu2($param1 = '', $param2 = '', $param3 = '') {
+    // Create a new TopMenu2 item
+    if ($param1 == 'create') {
+        $response = $this->crud_model->topmenu2_create();
+        echo $response;
+        return; // Stop further execution after response
+    }
+
+    // Update an existing TopMenu2 item
+    if ($param1 == 'update') {
+        if (empty($param2)) {
+            echo json_encode(['status' => false, 'notification' => 'TopMenu2 ID is required for update.']);
+            return; // Stop further execution
+        }
+        $response = $this->crud_model->topmenu2_update($param2);
+        echo $response;
+        return; // Stop further execution after response
+    }
+
+    // Delete a TopMenu2 item
+    if ($param1 == 'delete') {
+        if (empty($param2)) {
+            echo json_encode(['status' => false, 'notification' => 'TopMenu2 ID is required for deletion.']);
+            return; // Stop further execution
+        }
+        $response = $this->crud_model->topmenu2_delete($param2);
+        echo $response;
+        return; // Stop further execution
+    }
+
+    // Display the default TopMenu2 list
+    if (empty($param1)) {
+        $page_data['folder_name'] = 'topmenu2';
+        $page_data['page_title'] = 'TopMenu2';
+        $this->load->view('backend/index', $page_data); // Main page view
+        return; // Stop further execution
+    }
+  }
+
+
+
+
+    // MidMenu1 section methods
+  public function midmenu1($param1 = '', $param2 = '', $param3 = '') {
+    // Create a new MidMenu1 item
+    if ($param1 == 'create') {
+        $response = $this->crud_model->midmenu1_create();
+        echo $response;
+        return; // Stop further execution after response
+    }
+
+    // Update an existing MidMenu1 item
+    if ($param1 == 'update') {
+        if (empty($param2)) {
+            echo json_encode(['status' => false, 'notification' => 'MidMenu1 ID is required for update.']);
+            return; // Stop further execution
+        }
+        $response = $this->crud_model->midmenu1_update($param2);
+        echo $response;
+        return; // Stop further execution after response
+    }
+
+    // Delete a MidMenu1 item
+    if ($param1 == 'delete') {
+        if (empty($param2)) {
+            echo json_encode(['status' => false, 'notification' => 'MidMenu1 ID is required for deletion.']);
+            return; // Stop further execution
+        }
+        $response = $this->crud_model->midmenu1_delete($param2);
+        echo $response;
+        return; // Stop further execution
+    }
+
+    // Display the default MidMenu1 list
+    if (empty($param1)) {
+        $page_data['folder_name'] = 'midmenu1';
+        $page_data['page_title'] = 'MidMenu1';
+        $this->load->view('backend/index', $page_data); // Main page view
+        return; // Stop further execution
+    }
+  }
+
+
+    // MidMenu2 section methods
+  public function midmenu2($param1 = '', $param2 = '', $param3 = '') {
+    // Create a new MidMenu2 item
+    if ($param1 == 'create') {
+        $response = $this->crud_model->midmenu2_create();
+        echo $response;
+        return; // Stop further execution after response
+    }
+
+    // Update an existing MidMenu2 item
+    if ($param1 == 'update') {
+        if (empty($param2)) {
+            echo json_encode(['status' => false, 'notification' => 'MidMenu2 ID is required for update.']);
+            return; // Stop further execution
+        }
+        $response = $this->crud_model->midmenu2_update($param2);
+        echo $response;
+        return; // Stop further execution after response
+    }
+
+    // Delete a MidMenu2 item
+    if ($param1 == 'delete') {
+        if (empty($param2)) {
+            echo json_encode(['status' => false, 'notification' => 'MidMenu2 ID is required for deletion.']);
+            return; // Stop further execution
+        }
+        $response = $this->crud_model->midmenu2_delete($param2);
+        echo $response;
+        return; // Stop further execution after response
+    }
+
+    // Display the default MidMenu2 list
+    if (empty($param1)) {
+        $page_data['folder_name'] = 'midmenu2';
+        $page_data['page_title'] = 'MidMenu2';
+        $this->load->view('backend/index', $page_data); // Main page view
+        return; // Stop further execution
+    }
+  }
+
+
+
+
+    // HeadSpeech section methods
+  public function head_speech($param1 = '', $param2 = '', $param3 = '') {
+    // Create a new HeadSpeech
+    if ($param1 == 'create') {
+        $response = $this->crud_model->head_speech_create();
+        echo $response;
+        return; // Stop further execution after response
+    }
+
+    // Update an existing HeadSpeech
+    if ($param1 == 'update') {
+        if (empty($param2)) {
+            echo json_encode(['status' => false, 'notification' => 'HeadSpeech ID is required for update.']);
+            return; // Stop further execution
+        }
+        $response = $this->crud_model->head_speech_update($param2);
+        echo $response;
+        return; // Stop further execution after response
+    }
+
+    // Delete a HeadSpeech
+    if ($param1 == 'delete') {
+        if (empty($param2)) {
+            echo json_encode(['status' => false, 'notification' => 'HeadSpeech ID is required for deletion.']);
+            return; // Stop further execution
+        }
+        $response = $this->crud_model->head_speech_delete($param2);
+        echo $response;
+        return; // Stop further execution after response
+    }
+
+    // Display the default HeadSpeech list
+    if (empty($param1)) {
+        $page_data['folder_name'] = 'head_speech';
+        $page_data['page_title'] = 'Head Speech';
+        $this->load->view('backend/index', $page_data); // Main page view
+        return; // Stop further execution
+    }
+  }
+
+
+
+
+
   //{Pages}
 // Page section methods
 public function page($param1 = '', $param2 = '', $param3 = '') {
@@ -406,6 +621,17 @@ public function page($param1 = '', $param2 = '', $param3 = '') {
       return; // Stop further execution
   }
 }
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -150,6 +150,353 @@ public function page_delete($id) {
 
 	
 
+// Get Topmenu Items
+public function get_topmenu_items($id = "") {
+    if (!empty($id)) {
+        $this->db->where('id', $id);
+    }
+    return $this->db->get('topmenu1')->result_array();
+}
+
+// Create Topmenu Item
+public function topmenu_create() {
+    // Validate inputs before proceeding
+    $name = $this->input->post('name');
+    $link = $this->input->post('link');
+
+    if (empty($name) || empty($link)) {
+        return json_encode(array('status' => false, 'notification' => 'All fields are required.'));
+    }
+
+    $data = [
+        'name' => html_escape($name),
+        'link' => html_escape($link),
+    ];
+
+    $this->db->insert('topmenu1', $data);
+
+    $response = array(
+        'status' => true,
+        'notification' => 'Menu item added successfully.'
+    );
+    return json_encode($response);
+}
+
+// Update Topmenu Item
+public function topmenu_update($id) {
+    $name = $this->input->post('name');
+    $link = $this->input->post('link');
+
+    if (empty($name) || empty($link)) {
+        return json_encode(array('status' => false, 'notification' => 'All fields are required.'));
+    }
+
+    $data = [
+        'name' => html_escape($name),
+        'link' => html_escape($link),
+    ];
+
+    $this->db->where('id', $id);
+    $this->db->update('topmenu1', $data);
+
+    $response = array(
+        'status' => true,
+        'notification' => 'Menu item updated successfully.'
+    );
+    return json_encode($response);
+}
+
+// Delete Topmenu Item
+public function topmenu_delete($id) {
+    $this->db->where('id', $id);
+    $this->db->delete('topmenu1');
+
+    $response = array(
+        'status' => true,
+        'notification' => 'Menu item deleted successfully.'
+    );
+    return json_encode($response);
+}
+
+
+
+// Get Topmenu2 Items
+public function get_topmenu2_items($id = "") {
+    if (!empty($id)) {
+        $this->db->where('id', $id);
+    }
+    return $this->db->get('topmenu2')->result_array();
+}
+
+// Create Topmenu2 Item
+public function topmenu2_create() {
+    // Validate inputs before proceeding
+    $name = $this->input->post('name');
+    $link = $this->input->post('link');
+
+    if (empty($name) || empty($link)) {
+        return json_encode(array('status' => false, 'notification' => 'All fields are required.'));
+    }
+
+    $data = [
+        'name' => html_escape($name),
+        'link' => html_escape($link),
+    ];
+
+    $this->db->insert('topmenu2', $data);
+
+    $response = array(
+        'status' => true,
+        'notification' => 'Menu item added successfully.'
+    );
+    return json_encode($response);
+}
+
+// Update Topmenu2 Item
+public function topmenu2_update($id) {
+    $name = $this->input->post('name');
+    $link = $this->input->post('link');
+
+    if (empty($name) || empty($link)) {
+        return json_encode(array('status' => false, 'notification' => 'All fields are required.'));
+    }
+
+    $data = [
+        'name' => html_escape($name),
+        'link' => html_escape($link),
+    ];
+
+    $this->db->where('id', $id);
+    $this->db->update('topmenu2', $data);
+
+    $response = array(
+        'status' => true,
+        'notification' => 'Menu item updated successfully.'
+    );
+    return json_encode($response);
+}
+
+// Delete Topmenu2 Item
+public function topmenu2_delete($id) {
+    $this->db->where('id', $id);
+    $this->db->delete('topmenu2');
+
+    $response = array(
+        'status' => true,
+        'notification' => 'Menu item deleted successfully.'
+    );
+    return json_encode($response);
+}
+
+
+
+
+// Get Mid1 Items
+public function get_mid1_items($id = "") {
+    if (!empty($id)) {
+        $this->db->where('id', $id);
+    }
+    return $this->db->get('midmenu1')->result_array();
+}
+
+// Create Mid1 Item
+public function mid1_create() {
+    // Validate inputs before proceeding
+    $name = $this->input->post('name');
+    $link = $this->input->post('link');
+
+    if (empty($name) || empty($link)) {
+        return json_encode(array('status' => false, 'notification' => 'All fields are required.'));
+    }
+
+    $data = [
+        'name' => html_escape($name),
+        'link' => html_escape($link),
+    ];
+
+    $this->db->insert('midmenu1', $data);
+
+    $response = array(
+        'status' => true,
+        'notification' => 'Menu item added successfully.'
+    );
+    return json_encode($response);
+}
+
+// Update Mid1 Item
+public function mid1_update($id) {
+    $name = $this->input->post('name');
+    $link = $this->input->post('link');
+
+    if (empty($name) || empty($link)) {
+        return json_encode(array('status' => false, 'notification' => 'All fields are required.'));
+    }
+
+    $data = [
+        'name' => html_escape($name),
+        'link' => html_escape($link),
+    ];
+
+    $this->db->where('id', $id);
+    $this->db->update('midmenu1', $data);
+
+    $response = array(
+        'status' => true,
+        'notification' => 'Menu item updated successfully.'
+    );
+    return json_encode($response);
+}
+
+// Delete Mid1 Item
+public function mid1_delete($id) {
+    $this->db->where('id', $id);
+    $this->db->delete('midmenu1');
+
+    $response = array(
+        'status' => true,
+        'notification' => 'Menu item deleted successfully.'
+    );
+    return json_encode($response);
+}
+
+// Get Mid2 Items
+public function get_mid2_items($id = "") {
+    if (!empty($id)) {
+        $this->db->where('id', $id);
+    }
+    return $this->db->get('midmenu2')->result_array();
+}
+
+// Create Mid2 Item
+public function mid2_create() {
+    // Validate inputs before proceeding
+    $name = $this->input->post('name');
+    $link = $this->input->post('link');
+
+    if (empty($name) || empty($link)) {
+        return json_encode(array('status' => false, 'notification' => 'All fields are required.'));
+    }
+
+    $data = [
+        'name' => html_escape($name),
+        'link' => html_escape($link),
+    ];
+
+    $this->db->insert('midmenu2', $data);
+
+    $response = array(
+        'status' => true,
+        'notification' => 'Menu item added successfully.'
+    );
+    return json_encode($response);
+}
+
+// Update Mid2 Item
+public function mid2_update($id) {
+    $name = $this->input->post('name');
+    $link = $this->input->post('link');
+
+    if (empty($name) || empty($link)) {
+        return json_encode(array('status' => false, 'notification' => 'All fields are required.'));
+    }
+
+    $data = [
+        'name' => html_escape($name),
+        'link' => html_escape($link),
+    ];
+
+    $this->db->where('id', $id);
+    $this->db->update('midmenu2', $data);
+
+    $response = array(
+        'status' => true,
+        'notification' => 'Menu item updated successfully.'
+    );
+    return json_encode($response);
+}
+
+// Delete Mid2 Item
+public function mid2_delete($id) {
+    $this->db->where('id', $id);
+    $this->db->delete('midmenu2');
+
+    $response = array(
+        'status' => true,
+        'notification' => 'Menu item deleted successfully.'
+    );
+    return json_encode($response);
+}
+
+// Get Head Speech Items
+public function get_head_speeches($id = "") {
+    if (!empty($id)) {
+        $this->db->where('id', $id);
+    }
+    return $this->db->get('head_speech')->result_array();
+}
+
+// Create Head Speech
+public function head_speech_create() {
+    // Validate inputs before proceeding
+    $head_name = $this->input->post('head_name');
+    $content = $this->input->post('content');
+
+    if (empty($head_name) || empty($content)) {
+        return json_encode(array('status' => false, 'notification' => 'All fields are required.'));
+    }
+
+    $data = [
+        'head_name' => html_escape($head_name),
+        'content' => $content,
+    ];
+
+    $this->db->insert('head_speech', $data);
+
+    $response = array(
+        'status' => true,
+        'notification' => 'Head speech added successfully.'
+    );
+    return json_encode($response);
+}
+
+// Update Head Speech
+public function head_speech_update($id) {
+    $head_name = $this->input->post('head_name');
+    $content = $this->input->post('content');
+
+    if (empty($head_name) || empty($content)) {
+        return json_encode(array('status' => false, 'notification' => 'All fields are required.'));
+    }
+
+    $data = [
+        'head_name' => html_escape($head_name),
+        'content' => $content,
+    ];
+
+    $this->db->where('id', $id);
+    $this->db->update('head_speech', $data);
+
+    $response = array(
+        'status' => true,
+        'notification' => 'Head speech updated successfully.'
+    );
+    return json_encode($response);
+}
+
+// Delete Head Speech
+public function head_speech_delete($id) {
+    $this->db->where('id', $id);
+    $this->db->delete('head_speech');
+
+    $response = array(
+        'status' => true,
+        'notification' => 'Head speech deleted successfully.'
+    );
+    return json_encode($response);
+}
+
+
+
 
 	public function section_update($param1 = '')
 	{

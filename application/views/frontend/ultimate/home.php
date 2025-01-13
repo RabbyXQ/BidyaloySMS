@@ -40,6 +40,14 @@
     </div>
     <!-- End Slider Section -->
 
+
+    <?php include 'mission.php'; ?>
+    <?php include 'news_ticker.php'; ?>
+    <?php include 'brief.php'; ?>
+    <?php include 'say.php'; ?>
+    <?php include 'notice_event.php'; ?>
+    <?php include 'recent_pic.php'; ?>
+
     <hr class="my-0">
 
     <!-- Intro Section -->
